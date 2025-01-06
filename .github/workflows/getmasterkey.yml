@@ -15,14 +15,18 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
 
-      - name: Generate Rails Master Key
+      - name: Install dependencies
         run: |
-          bundle exec rails credentials:edit
-        env:
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          bundle install
 
-      - name: Commit generated master.key
+      - name: Generate Master Key
         run: |
+          # Generate a new master key using Rails secret command
+          rails secret > config/master.key
           git add config/master.key
           git commit -m "Add generated master.key"
+          git push origin main
+
+      - name: Push changes to GitHub
+        run: |
           git push origin main
