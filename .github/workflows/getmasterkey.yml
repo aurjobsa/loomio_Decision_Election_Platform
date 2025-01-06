@@ -1,0 +1,28 @@
+name: Generate Master Key
+
+on:
+  push:
+    branches:
+      - main  # Change to the branch you use for production
+
+jobs:
+  generate-master-key:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+
+      - name: Generate Rails Master Key
+        run: |
+          bundle exec rails credentials:edit
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+
+      - name: Commit generated master.key
+        run: |
+          git add config/master.key
+          git commit -m "Add generated master.key"
+          git push origin main
