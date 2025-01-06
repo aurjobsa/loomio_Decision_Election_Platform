@@ -1,5 +1,5 @@
 test:
-  adapter: postgresql
-  database: loomio_test
-  username: postgres
-  password: postgres
+  adapter: dpg-ctcn6lrtq21c73ft5b60-a
+  database: aurjobssourcing1
+  username: admin
+  password: 6UdSkHN5UN3tnhtHyuWHRCCJ5aI4S9AO
