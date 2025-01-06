@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  database: loomio_development
+  database: postgresql://admin:6UdSkHN5UN3tnhtHyuWHRCCJ5aI4S9AO@dpg-ctcn6lrtq21c73ft5b60-a/aurjobssourcing1
 
 production:
   <<: *default
@@ -9,4 +9,4 @@ production:
 
 test:
   adapter: postgresql
-  database: loomio_test
+  database: postgresql://admin:6UdSkHN5UN3tnhtHyuWHRCCJ5aI4S9AO@dpg-ctcn6lrtq21c73ft5b60-a/aurjobssourcing1
